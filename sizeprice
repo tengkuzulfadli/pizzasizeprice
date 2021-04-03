@@ -1,0 +1,39 @@
+using System;
+
+namespace LabSevenFour
+{
+    class PizzaPrice
+    {
+        static void Main(string[] args)
+        {
+            string[] size = { "S", "M", "L", "X"}; //Declare pizza size
+            decimal[] price = { 6.99M, 8.99M, 12.50M, 15.00M}; //Declare pizza price in data type decimal
+
+            Console.WriteLine("Please enter a pizza size : "); //To prompt user input
+            string pizzaSize = Console.ReadLine();
+
+            var userSelect = false; //Need to declare a variable that hold a false return
+
+            while (userSelect == false) //Using while loop to determine the user input selection. So, in parameters, the bool must be "False"
+            {
+                for (int i = 0; i < size.Length; i++) //Using for loop nested inside While loop
+                {
+                    if (size[i] == pizzaSize) //By useing If statement to compare a user input and pizza size in "True" condition
+                    {
+                        Console.WriteLine("Your pizza size is " + pizzaSize + ". The price is " + price[i].ToString("C"));
+                        userSelect = true; //Bool must be "True"
+                        break; //If the condition met, it's going to break
+                    }
+                }
+
+                if (userSelect == false) //Out of For loop, but inside While loop, add another If statement to return an output if user input False
+                {
+                    Console.WriteLine("Please enter a valid pizza size");
+                    pizzaSize = Console.ReadLine();
+                }
+            }
+
+            Console.ReadKey();
+        }
+    }
+}
